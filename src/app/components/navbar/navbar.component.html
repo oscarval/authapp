@@ -5,23 +5,24 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['home']"k>Home <span class="sr-only">(current)</span></a>
+      <li routerLinkActive="active" class="nav-item active">
+        <a class="nav-link"  [routerLink]="['home']"k>Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['precios']"k>Precios</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link"  [routerLink]="['precios']"k>Precios</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['protegida']"k>Protegida</a>
+      <li *ngIf="auth.isAuthenticated()" routerLinkActive="active"
+          class="nav-item">
+        <a class="nav-link"  [routerLink]="['protegida']"k>Protegida</a>
       </li>
     </ul>
     <span class="navbar-text">
      <button *ngIf="!auth.isAuthenticated()"  (click)="login()"
-     type="button" class="btn btn-outline-primary">
+     type="button" class="btn btn-outline-primary btn-sm">
       Ingresar
     </button>
      <button *ngIf="auth.isAuthenticated()" (click)="salir()"
-     type="button" class="btn btn-outline-primary">
+     type="button" class="btn btn-outline-primary btn-sm">
       Salir
     </button>
     </span>
